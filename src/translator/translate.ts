@@ -69,25 +69,25 @@ function translate(interpretation: Interpretation): string {
 
     case "Mismatch: addresses":
       sentence += `${itemsCount!.toLocaleString()} operation${
-        plural ? "s have" : "has"
+        plural ? "s have" : " has"
       } an erroneous derived address`;
       break;
 
     case "Mismatch: amounts":
       sentence += `${itemsCount!.toLocaleString()} operation${
-        plural ? "s have" : "has"
+        plural ? "s have" : " has"
       } an erroneous amount`;
       break;
 
     case "Mismatch: token amounts":
       sentence += `${itemsCount!.toLocaleString()} token-related operation${
-        plural ? "s have" : "has"
+        plural ? "s have" : " has"
       } an erroneous amount`;
       break;
 
     case "Mismatch: token tickers":
       sentence += `${itemsCount!.toLocaleString()} token-related operation${
-        plural ? "s have" : "has"
+        plural ? "s have" : " has"
       } an erroneous ticker`;
       break;
 
