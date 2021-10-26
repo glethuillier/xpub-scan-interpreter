@@ -1,8 +1,8 @@
-![Xpub Scan Intepreter](./logo.png)
+![Xpub Scan Interpreter](./logo.png)
 
-Xpub Scan reports interpeter.
+Xpub Scan reports interpreter.
 
-This tool suggests interpretations of Xpub Scan reports in human language.
+This tool suggests human-readable interpretations of Xpub Scan reports.
 
 ## Overview
 
@@ -36,5 +36,5 @@ Suggested interpretation
 
 Out of sync since 2021-05-02 21:59:46.
 In addition, 451 nonspecific operations are missing.
-Besides, there are 31 operations which are extra operations but not duplication of existing operations.
+Besides, there are 31 operations which are extra operations but not duplications of existing operations.
 ```
