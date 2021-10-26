@@ -59,8 +59,8 @@ function translate(interpretation: Interpretation): string {
         plural ? "s which are" : " which is an"
       } `;
       sentence += `extra operation${plural ? "s" : ""} but `;
-      sentence += `not ${plural ? "" : "a"} duplication of ${
-        plural ? "" : "an"
+      sentence += `not${plural ? "" : " a"} duplication of${
+        plural ? "" : " an"
       } existing operation${plural ? "s" : ""}`;
       break;
 
