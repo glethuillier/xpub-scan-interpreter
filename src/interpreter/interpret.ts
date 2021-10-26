@@ -5,9 +5,10 @@ import {
 } from "../interfaces/interfaces";
 
 import {
+  identifyPaginationIssue,
   identifyOutOfSync,
   identifyDusts,
-  identifyRemainingMissingOperations,
+  identifyNonspecificMissingOperations,
 } from "./missingOps";
 
 import {
@@ -67,10 +68,19 @@ function getInterpretation(
     interpretations.push(dusts);
   }
 
+  // pagination issues
+  console.log(chalk.green(" ► pagination issues"));
+
+  const paginationIssue = identifyPaginationIssue(comparisons);
+
+  if (typeof paginationIssue !== "undefined") {
+    interpretations.push(paginationIssue);
+  }
+
   // remaining missing operations
   console.log(chalk.green(" ► remaining operations"));
 
-  const missingOperations = identifyRemainingMissingOperations(comparisons);
+  const missingOperations = identifyNonspecificMissingOperations(comparisons);
 
   if (typeof missingOperations !== "undefined") {
     interpretations.push(missingOperations);

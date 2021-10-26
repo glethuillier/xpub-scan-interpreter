@@ -2,7 +2,42 @@ import { Interpretation, Comparison } from "../interfaces/interfaces";
 
 const DUST_THRESHOLD = 1000;
 
-function identifyRemainingMissingOperations(
+function identifyPaginationIssue(
+  comparisons: Comparison[]
+): Interpretation | undefined {
+  let previousIsMissing = false;
+  const missingOperationsIndices = new Set<number>();
+
+  comparisons.forEach(function (comparison, index) {
+    if (comparison.status.startsWith("Missing")) {
+      if (previousIsMissing) {
+        missingOperationsIndices.add(index);
+        missingOperationsIndices.add(index - 1);
+      }
+      previousIsMissing = true;
+    } else {
+      previousIsMissing = false;
+    }
+  });
+
+  for (const index of missingOperationsIndices) {
+    comparisons.splice(index, 1);
+  }
+
+  const missingFromPaginationIssueCount = missingOperationsIndices.size;
+
+  if (missingFromPaginationIssueCount != 0) {
+    return {
+      interpretation: "pagination issue",
+      certainty: false,
+      interpretedItemsCount: missingFromPaginationIssueCount,
+    };
+  }
+
+  return undefined;
+}
+
+function identifyNonspecificMissingOperations(
   comparisons: Comparison[]
 ): Interpretation | undefined {
   let missingOperationsCount = 0;
@@ -103,4 +138,9 @@ function identifyOutOfSync(
   return interpretations;
 }
 
-export { identifyRemainingMissingOperations, identifyDusts, identifyOutOfSync };
+export {
+  identifyPaginationIssue,
+  identifyNonspecificMissingOperations,
+  identifyDusts,
+  identifyOutOfSync,
+};

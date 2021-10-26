@@ -39,6 +39,13 @@ function translate(interpretation: Interpretation): string {
       }`;
       break;
 
+    case "pagination issue":
+      sentence += `there ${plural ? "are " : "is "}`;
+      sentence += `${itemsCount!.toLocaleString()} operation${
+        plural ? "s" : ""
+      } missing because of a pagination issue`;
+      break;
+
     case "nonspecific missing operation":
       sentence += `${itemsCount!.toLocaleString()} nonspecific operation`;
       sentence += `${plural ? "s are" : " is"} missing`;
@@ -98,7 +105,7 @@ function translate(interpretation: Interpretation): string {
       break;
   }
 
-  return sentence;
+  return sentence.charAt(0).toUpperCase() + sentence.slice(1);
 }
 
 function translateIntoHumanLanguage(interpretations: Interpretation[]) {

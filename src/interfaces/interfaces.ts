@@ -2,6 +2,7 @@ type InterpretationStatus =
   | "perfect matching"
   | "nonduplicated extra operation"
   | "duplicated operation"
+  | "pagination issue"
   | "nonspecific missing operation"
   | "dust"
   | "mismatching amounts"
