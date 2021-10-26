@@ -2,7 +2,7 @@
 
 Xpub Scan reports interpeter.
 
-This tool suggest interpretations of Xpub Scan reports in human language.
+This tool suggests interpretations of Xpub Scan reports in human language.
 
 ## Overview
 
