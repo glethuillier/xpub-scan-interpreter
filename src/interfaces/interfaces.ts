@@ -13,7 +13,6 @@ interface Interpretation {
   interpretation: InterpretationStatus | string;
   certainty: boolean;
   interpretedItemsCount?: number;
-  itemsData?: string[];
 }
 
 interface Comparison {

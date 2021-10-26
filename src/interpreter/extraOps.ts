@@ -39,7 +39,6 @@ function identifyDuplicatedOperations(
       interpretation: "duplicated operation",
       certainty: true,
       interpretedItemsCount: duplicatedOperationsCount,
-      itemsData: duplicatedOperations,
     };
   }
 

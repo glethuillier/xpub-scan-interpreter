@@ -49,8 +49,6 @@ function translate(interpretation: Interpretation): string {
         plural ? "s are" : " is"
       } duplicated`;
 
-      // interpretation += "(" + itemsData!.join('", "') + ")";
-
       break;
 
     case "nonduplicated extra operation":
