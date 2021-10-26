@@ -1,7 +1,5 @@
 import { Interpretation } from "../interfaces/interfaces";
 
-import chalk from "chalk";
-
 const TRANSITION_WORDS = [
   "Besides",
   "Furthermore",
@@ -105,32 +103,32 @@ function translate(interpretation: Interpretation): string {
       break;
   }
 
-  return sentence.charAt(0).toUpperCase() + sentence.slice(1);
+  return sentence;
 }
 
 function translateIntoHumanLanguage(interpretations: Interpretation[]) {
   const transitionWords = shuffleWords(TRANSITION_WORDS);
   const uncertaintyWords = shuffleWords(UNCERTAINTY_WORDS);
-  let renderedSentence = "";
+  let translation = "";
 
   interpretations.forEach(function (interpretation, i) {
     const certain = interpretation.certainty;
 
-    renderedSentence =
-      interpretations.length > 1 && renderedSentence
-        ? renderedSentence
+    translation =
+      interpretations.length > 1 && translation
+        ? translation
             .concat(transitionWords[i % transitionWords.length])
             .concat(", ")
         : "";
 
     if (!certain) {
-      renderedSentence += `${uncertaintyWords[i % uncertaintyWords.length]} `;
+      translation += `${uncertaintyWords[i % uncertaintyWords.length]} `;
     }
 
-    renderedSentence += `${translate(interpretation)}. `;
+    translation += `${translate(interpretation)}. `;
   });
 
-  return chalk.whiteBright(renderedSentence);
+  return translation.charAt(0).toUpperCase() + translation.slice(1);
 }
 
 export { translateIntoHumanLanguage };

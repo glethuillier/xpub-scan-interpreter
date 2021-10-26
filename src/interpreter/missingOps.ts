@@ -11,8 +11,8 @@ function identifyPaginationIssue(
   comparisons.forEach(function (comparison, index) {
     if (comparison.status.startsWith("Missing")) {
       if (previousIsMissing) {
-        missingOperationsIndices.add(index);
         missingOperationsIndices.add(index - 1);
+        missingOperationsIndices.add(index);
       }
       previousIsMissing = true;
     } else {
@@ -20,7 +20,7 @@ function identifyPaginationIssue(
     }
   });
 
-  for (const index of missingOperationsIndices) {
+  for (const index of Array.from(missingOperationsIndices).reverse()) {
     comparisons.splice(index, 1);
   }
 

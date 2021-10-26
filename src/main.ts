@@ -68,4 +68,4 @@ const interpretations = getInterpretation(comparisons, stats);
 //console.dir(interpretations);
 
 console.log(chalk.bold("\nSuggested interpretation\n"));
-console.log(translateIntoHumanLanguage(interpretations));
+console.log(chalk.whiteBright(translateIntoHumanLanguage(interpretations)));
