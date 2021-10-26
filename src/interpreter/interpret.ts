@@ -69,7 +69,7 @@ function getInterpretation(
   }
 
   // pagination issues
-  console.log(chalk.green(" ► pagination issues"));
+  console.log(chalk.green(" ► pagination issue"));
 
   const paginationIssue = identifyPaginationIssue(comparisons);
 
@@ -77,7 +77,7 @@ function getInterpretation(
     interpretations.push(paginationIssue);
   }
 
-  // remaining missing operations
+  // remaining missing operations — nonspecific missing operations
   console.log(chalk.green(" ► remaining operations"));
 
   const missingOperations = identifyNonspecificMissingOperations(comparisons);

@@ -2,6 +2,8 @@ import { Interpretation, Comparison } from "../interfaces/interfaces";
 
 const DUST_THRESHOLD = 1000;
 
+// identify potential pagination issues by spotting
+// clusters of nonspecific missing operations
 function identifyPaginationIssue(
   comparisons: Comparison[]
 ): Interpretation | undefined {
