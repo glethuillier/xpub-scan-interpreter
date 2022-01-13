@@ -22,6 +22,7 @@ import { identifyUnknownOperations } from "./unknownComparisons";
 import chalk from "chalk";
 
 function getInterpretation(
+  currency: string,
   comparisons: Comparison[],
   stats: Statistics
 ): Interpretation[] {
@@ -62,10 +63,14 @@ function getInterpretation(
   // dust operations
   console.log(chalk.green(" ► dusts"));
 
-  const dusts = identifyDusts(comparisons);
+  if (currency.includes("bitcoin")) {
+    const dusts = identifyDusts(comparisons);
 
-  if (typeof dusts !== "undefined") {
-    interpretations.push(dusts);
+    if (typeof dusts !== "undefined") {
+      interpretations.push(dusts);
+    }
+  } else {
+    console.log(chalk.green("   (skipped)"));
   }
 
   // pagination issues
