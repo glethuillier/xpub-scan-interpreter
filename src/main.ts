@@ -60,9 +60,11 @@ function getStatistics(xpubScanReport: any) {
 const xpubScanReport = parseReport(process.argv[2]);
 const stats = getStatistics(xpubScanReport);
 
+const currency = xpubScanReport["meta"]["currency"].toLocaleLowerCase();
+
 const comparisons = xpubScanReport["comparisons"];
 
-const interpretations = getInterpretation(comparisons, stats);
+const interpretations = getInterpretation(currency, comparisons, stats);
 
 // show pre-transalted interpretation
 //console.dir(interpretations);
